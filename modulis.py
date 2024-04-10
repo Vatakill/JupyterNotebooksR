@@ -107,3 +107,62 @@ class FileReader():
         maxi = self.maxP()
         pce = maxi / 10
         return pce
+    
+
+
+class Mokinys():
+    def __init__(self, vardas, pavarde):
+        self.V = vardas
+        self.P = pavarde
+        self.__pazymiai = []
+
+    def getVidurkis(self):
+        vidurkis = sum(self.__pazymiai)/len(self.__pazymiai)
+        return vidurkis
+    
+    def getMax(self): 
+        pazymysMax = max(self.__pazymiai)
+        return pazymysMax
+
+    def getMin(self):
+        pazymysMin = min(self.__pazymiai)
+        return pazymysMin
+    
+    def addPaz(self, pazymys):
+        if pazymys > 0 and pazymys <= 10:
+            self.__pazymiai.append(pazymys)
+
+    def getPazymiai(self):
+        return self.__pazymiai
+    
+
+class Abiturientas(Mokinys):
+    def __init__(self, vardas, pavarde):
+        super().__init__(vardas, pavarde)
+        self.exRes = []
+
+    def addExRes(self, Res):
+        self.exRes.append(Res)
+
+    def getBendrasVid(self):
+        bendriPazymiai = self.pazymiai + self.exRes
+        bendrasVid = sum(bendriPazymiai)/len(bendriPazymiai)
+        return bendrasVid
+    
+
+class Mokykla():
+    def __init__(self):
+        self.Mokiniai = []
+
+    def addMokinys(self, mokinys):
+        self.Mokiniai.append(mokinys)
+
+    def removeMokinys(self, mokinys):
+        self.Mokiniai.remove(mokinys)
+
+    def VisuMokiniuVidurkis(self):
+        VisuMokiniuPazymiai = []
+        for mokinys in self.Mokiniai:
+            VisuMokiniuPazymiai.extend(mokinys.pazymiai) # extend leidzia sujungti skirtingus sarasus, prisplecia sarasas, esantis pries extend metoda
+        VisuMokiniuVidurkis = sum(VisuMokiniuPazymiai)/len(VisuMokiniuPazymiai)
+        return VisuMokiniuVidurkis
