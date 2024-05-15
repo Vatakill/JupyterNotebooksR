@@ -38,4 +38,37 @@ def rikiuoti_didejant(sarasas):
 # print(rikiuoti(rikiuoti_mazejanciai, [5,3,4,1,6,9]))
 
 
+# 1 Užduotis
+# Sukurkite funkciją, kuri patikrintų ar skaičius dalinasi iš 3
+# Parašykite keletą testų (naudojantis parametrize)
+def kartotinis3(sk):
+    return sk % 3 == 0
+
+# 2 užduotis 
+# Parašykite funkciją rasti_pasikartojancias_raides, kuri priima sąrašą žodžių ir grąžina sąrašą tų žodžių
+# kurie turi bent vieną pasikartojančią raidę.
+# Parašykite keletą testų (naudojantis parametrize)
+def raides(zodziu_sarasas):
+    atrinkti_zodziai = []
+    for zodis in zodziu_sarasas:
+        if len(set(zodis)) < len(zodis):
+            atrinkti_zodziai.append(zodis)
+    return atrinkti_zodziai
+
+# [i for i in x if len(i) > len(set(i))]
+
+# 3 užduotis 
+# Parašykite funkciją, kuri priima skaičių ir patikrina, ar jis yra pirminis. 
+# Grąžinkite True, jei skaičius yra pirminis, ir False, jei ne.
+# Parašykite keletą testų (naudojantis parametrize)
+def pirminis(sk):
+    if sk <= 1:
+        return False
+    for e in range(2, sk):
+        if sk % e == 0:
+            return False
+    else:
+        return True
+
+     
 

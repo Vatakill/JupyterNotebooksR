@@ -1,4 +1,4 @@
-from uzduotis1 import apverstas, ilgis, teigiami, rikiuoti, rikiuoti_mazejanciai, rikiuoti_didejant
+from uzduotis1 import apverstas, ilgis, teigiami, rikiuoti, rikiuoti_mazejanciai, kartotinis3, raides, pirminis
 
 def test_apverstas():
     txt = 'alus'
@@ -30,3 +30,31 @@ def test_teigiami():
 
 def test_rikiuoti_mazejanciai():
     assert rikiuoti(rikiuoti_mazejanciai, [1, -2, 3, -4]) == [3,1,-2,-4]
+
+import pytest
+
+@pytest.mark.parametrize('sk, ats', 
+                         [(1, False), 
+                         (3, True), 
+                         (6, True)])
+def test_kartotinis3(sk, ats):
+    assert kartotinis3(sk) == ats
+
+
+@pytest.mark.parametrize('zodziu_sarasas, atrinkti_zodziai',
+[(['lape', 'kiaune', 'krokodilas'], ['krokodilas']),
+ (['antanas', 'jonas', 'vytautas'], ['antanas', 'vytautas']),
+ (['medis', 'zole', 'krumas'], [])])
+def test_raides(zodziu_sarasas, atrinkti_zodziai):
+    assert raides(zodziu_sarasas) == atrinkti_zodziai
+
+
+@pytest.mark.parametrize('skaicius, ats', [
+    (2, True),
+    (3, True),
+    (6, False),
+    (47, True),
+    (103, True)])
+
+def test_pirminis(skaicius, ats):
+    assert pirminis(skaicius) == ats

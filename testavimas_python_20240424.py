@@ -15,3 +15,6 @@ def hello(vardas):
 
 def pirmas_sarase(sarasas:list):
     return sarasas[0] if sarasas else None
+
+def kubo_turis(a,b,c):
+    return a*b*c
